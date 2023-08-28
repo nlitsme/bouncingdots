@@ -47,6 +47,8 @@ bool hit(const QPainterPath &projectilePath, QGraphicsScene *scene, QPointF &hit
                 closest = item;
             }
         }
+        if (!closest)
+            return false;
 
         QPainterPath targetShape = closest->mapToScene(closest->shape());
         // QLineF has normalVector(), which is useful for extending our path to a rectangle.
