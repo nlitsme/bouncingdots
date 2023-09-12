@@ -35,7 +35,7 @@ class Dot(QtWidgets.QGraphicsItem):
         painter.setBrush(self.color)
         painter.drawEllipse(Dot.CenterPoint, self.radius, self.radius)
 
-        painter.drawLine(0,0, self.speed*math.cos(self.angle), self.speed*math.sin(self.angle))
+        painter.drawLine(QtCore.QPointF(0,0), QtCore.QPointF(self.speed*math.cos(self.angle), self.speed*math.sin(self.angle)))
 
     def distance(self, item):
         d= self.pos()-item.pos()
@@ -139,7 +139,7 @@ class GraphWidget(QtWidgets.QGraphicsView):
         scene.setSceneRect(-600, -600, 1200, 900)
         scene.setItemIndexMethod(QtWidgets.QGraphicsScene.NoIndex)
 
-        self.timerId = self.startTimer(1000 / 25)
+        self.timerId = self.startTimer(1000 // 25)
 
         self.setScene(scene)
         self.setRenderHint(QtGui.QPainter.Antialiasing)
